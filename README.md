@@ -1,11 +1,11 @@
 ## 💫 About Me:
-🔭 **I’m currently working on** Python and Java projects, focusing on building beginner-friendly applications and tackling programming challenges 💻  
-👯 **I’m looking to collaborate on** Web development projects using HTML, CSS, and JavaScript 🌐  
-🤝 **I’m looking for help with** Advanced Python topics, data visualization, and optimizing coding efficiency 📈  
-🌱 **I’m currently learning** HTML, CSS, linguistics, and enhancing my programming knowledge 🧠  
-💬 **Ask me about** Vtubers, anime, literature, and beginner programming tips 🌟  
-⚡ **Fun fact** I once traveled to Japan and helped a local by speaking in Chinese! 🇯🇵  
-🛠️ **Tech I use** Python, Java, HTML, CSS, Git, VS Code, Jupyter Notebook, and various web development tools 🌍
+🔭 I’m currently working on Python and Java projects, focusing on building beginner-friendly applications and tackling programming challenges 💻  
+👯 I’m looking to collaborate on Web development projects using HTML, CSS, and JavaScript 🌐  
+🤝 I’m looking for help with Advanced Python topics, data visualization, and optimizing coding efficiency 📈  
+🌱 I’m currently learning HTML, CSS, linguistics, and enhancing my programming knowledge 🧠  
+💬 Ask me about Vtubers, anime, literature, and beginner programming tips 🌟  
+⚡ Fun fact I once traveled to Japan and helped a local by speaking in Chinese! 🇯🇵  
+🛠️ Tech I use Python, Java, HTML, CSS, Git, VS Code, Jupyter Notebook, and various web development tools 🌍
 
 ## 🌐 Socials:
 [![Bluesky](https://img.shields.io/badge/bluesky-0285FF?style=for-the-badge&logo=bluesky&logoColor=%23FFFFFF)](https://bsky.app/profile/ptc05.bsky.social) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/may0neko_ptc) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/Chiu Peter) [![X](https://img.shields.io/badge/X-black.svg?logo=X&logoColor=white)](https://x.com/Peyerchiu1) 
