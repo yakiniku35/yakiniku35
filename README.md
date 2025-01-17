@@ -1,5 +1,5 @@
 # 💫 About Me:
-🔭 I’m currently working on<br><br>Python and Java projects, focusing on beginner-friendly applications and programming challenges 💻<br>👯 I’m looking to collaborate on<br><br>Web development projects using HTML, CSS, and JavaScript 🌐<br>🤝 I’m looking for help with<br><br>Advanced Python topics, data visualization, and improving coding efficiency 📈<br>🌱 I’m currently learning<br><br>HTML, CSS, linguistics, and deepening my understanding of programming concepts 🧠<br>💬 Ask me about<br><br>Vtubers, anime, literature, and beginner programming advice 🌟<br>⚡ Fun fact<br><br>I once traveled to Japan and ended up helping a local by speaking in Chinese! 🇯🇵
+* 🔭 I’m currently working on<br><br>Python and Java projects, focusing on beginner-friendly applications and programming challenges 💻<br>* 👯 I’m looking to collaborate on<br><br>Web development projects using HTML, CSS, and JavaScript 🌐<br>🤝 I’m looking for help with<br><br>Advanced Python topics, data visualization, and improving coding efficiency 📈<br>🌱 I’m currently learning<br><br>HTML, CSS, linguistics, and deepening my understanding of programming concepts 🧠<br>💬 Ask me about<br><br>Vtubers, anime, literature, and beginner programming advice 🌟<br>⚡ Fun fact<br><br>I once traveled to Japan and ended up helping a local by speaking in Chinese! 🇯🇵
 
 
 ## 🌐 Socials:
