@@ -1,8 +1,26 @@
-# 💫 About Me:
-* 🔭 I’m currently working on<br><br>Python and Java projects, focusing on beginner-friendly applications and programming challenges 💻<br>
-* 👯 I’m looking to collaborate on<br><br>Web development projects using HTML, CSS, and JavaScript 🌐<br>
-* 🤝 I’m looking for help with<br><br>Advanced Python topics, data visualization, and improving coding efficiency 📈<br>
-* 🌱 I’m currently learning<br><br>HTML, CSS, linguistics, and deepening my understanding of programming concepts 🧠<br>💬 Ask me about<br><br>Vtubers, anime, literature, and beginner programming advice 🌟<br>⚡ Fun fact<br><br>I once traveled to Japan and ended up helping a local by speaking in Chinese! 🇯🇵
+## 💫 About Me:
+
+🔭 **I’m currently working on**  
+- Python and Java projects, focusing on building beginner-friendly applications and tackling programming challenges 💻  
+
+👯 **I’m looking to collaborate on**  
+- Web development projects using HTML, CSS, and JavaScript 🌐  
+
+🤝 **I’m looking for help with**  
+- Advanced Python topics, data visualization, and optimizing coding efficiency 📈  
+
+🌱 **I’m currently learning**  
+- HTML, CSS, linguistics, and enhancing my programming knowledge 🧠  
+
+💬 **Ask me about**  
+- Vtubers, anime, literature, and beginner programming tips 🌟  
+
+⚡ **Fun fact**  
+- I once traveled to Japan and helped a local by speaking in Chinese! 🇯🇵  
+
+🛠️ **Tech I use**  
+- Python, Java, HTML, CSS, Git, VS Code, Jupyter Notebook, and various web development tools 🌍
+
 
 
 ## 🌐 Socials:
