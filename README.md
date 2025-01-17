@@ -1,5 +1,5 @@
 ## 💫 About Me:
-🔭 I’m currently working on Python and Java projects, focusing on building beginner-friendly applications & tackling programming challenges 💻  
+🔭 I’m currently working on Python and Java projects, building beginner-friendly applications & tackling programming challenges 💻  
 👯 I’m looking to collaborate on Web development projects using HTML, CSS, and JavaScript 🌐  
 🤝 I’m looking for help with Advanced Python topics, data visualization, and optimizing coding efficiency 📈  
 🌱 I’m currently learning HTML, CSS, linguistics, and enhancing my programming knowledge 🧠  
