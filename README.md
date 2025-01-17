@@ -1,11 +1,11 @@
-## 💫 About Me:
-🔭 I’m currently working on Python and Java projects, building beginner-friendly applications & tackling programming challenges 💻  
-👯 I’m looking to collaborate on Web development projects using HTML, CSS, and JavaScript 🌐  
-🤝 I’m looking for help with Advanced Python topics, data visualization, and optimizing coding efficiency 📈  
-🌱 I’m currently learning HTML, CSS, linguistics, and enhancing my programming knowledge 🧠  
-💬 Ask me about Vtubers, anime, literature, and beginner programming tips 🌟  
-⚡ Fun fact I once traveled to Japan and helped a local by speaking in Chinese! 🇯🇵  
-🛠️ Tech I use Python, Java, HTML, CSS, Git, VS Code, Jupyter Notebook, and various web development tools 🌍
+## 💫 About Me:  
+🔭 Working on Python and Java projects, focusing on beginner-friendly apps & challenges 💻  
+👯 Open to collaborate on Web development with HTML, CSS, and JavaScript 🌐  
+🤝 Looking for help with Advanced Python, data visualization, and code optimization 📈  
+🌱 Currently learning HTML, CSS, linguistics, and enhancing programming skills 🧠  
+💬 Ask me about Vtubers, anime, literature, and beginner programming 🌟  
+⚡ Fun fact: I once helped a local in Japan by speaking in Chinese! 🇯🇵  
+🛠️ Tech: Python, Java, HTML, CSS, Git, VS Code, Jupyter Notebook 🌍
 
 ## 🌐 Socials:  
 [![Bluesky](https://img.shields.io/badge/bluesky-0285FF?style=for-the-badge&logo=bluesky&logoColor=%23FFFFFF)](https://bsky.app/profile/ptc05.bsky.social)  
