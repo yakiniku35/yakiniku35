@@ -1,11 +1,11 @@
 ## 💫 About Me:  
-🔭 Working on Python and Java projects, focusing on beginner-friendly apps & challenges 💻  
-👯 Open to collaborate on Web development with HTML, CSS, and JavaScript 🌐  
-🤝 Looking for help with Advanced Python, data visualization, and code optimization 📈  
-🌱 Currently learning HTML, CSS, linguistics, and enhancing programming skills 🧠  
-💬 Ask me about Vtubers, anime, literature, and beginner programming 🌟  
+🔭 Working on Python and Java projects
+👯 Open to collaborate on Web development with HTML, CSS, and JavaScript
+🤝 Looking for help with Advanced Python, data visualization, and code optimization  
+🌱 Currently learning HTML, CSS, linguistics, and enhancing programming skills  
+💬 Ask me about Vtubers, anime, literature, and beginner programming 
 ⚡ Fun fact: I once helped a local in Japan by speaking in Chinese! 🇯🇵  
-🛠️ Tech: Python, Java, HTML, CSS, Git, VS Code, Jupyter Notebook 🌍
+🛠️ Tech: Python, Java, HTML, CSS, Git, VS Code, Jupyter Notebook 
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white&width=120)](https://www.linkedin.com/in/chiu-peter-a3a8a6212)
 
