@@ -1,12 +1,11 @@
 oshi is SAKURA MIKO
 ```
-   /\\\\\\\\\              Peter              
-  /\\\///////\\\           ---------------- 
-  \///       \//\\\        Area: ??? 
-             /\\\\\\       Languages: ??? 
-            /\\\////       Host: Taiwan
-           /\\\            Uptime: ??y
-           \///
+   /\\\\\      Peter Chiu           
+   /\\\  \     ---------------- 
+   /\\\__/     Area: Mobile
+   /\\\        Languages: python, java, html, css, JS
+   /\\\        Host: Taipei, TW
+    ///        Uptime: 20y
 
 ```
 # 📊 GitHub Stats:
