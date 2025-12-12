@@ -13,7 +13,7 @@ oshi is SAKURA MIKO
       \/__/  
 
 ```
-# 📊 GitHub Stats:
+# Stats:
 ![](https://github-readme-stats.vercel.app/api?username=yakiniku35&theme=dark&hide_border=true&include_all_commits=false&count_private=false)<br/>
 ![](https://github-readme-streak-stats.herokuapp.com/?user=yakiniku35&theme=dark&hide_border=true)<br/>
 ![](https://github-readme-stats.vercel.app/api/top-langs/?username=yakiniku35&theme=dark&hide_border=true&include_all_commits=false&count_private=false&layout=compact)
