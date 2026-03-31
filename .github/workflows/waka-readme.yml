@@ -7,6 +7,9 @@ on:
     # runs at 12 AM UTC (5:30 AM IST)
     - cron: "0 0 * * *"
 
+permissions:
+  contents: write
+
 jobs:
   update-readme:
     name: WakaReadme DevMetrics
@@ -15,7 +18,7 @@ jobs:
         # this action name
       - uses: athul/waka-readme@master # do NOT replace with anything else
         with:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }} # optional if on profile readme
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # optional if on profile readme
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }} # required
           ### meta
           API_BASE_URL: https://wakatime.com/api # optional
