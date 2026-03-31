@@ -20,7 +20,7 @@ oshi is SAKURA MIKO<br/>
 
 <!--START_SECTION:waka-->
 
-```rust
+```txt
 From: 28 February 2026 - To: 30 March 2026
 
 Total Time: 39 hrs 14 mins
