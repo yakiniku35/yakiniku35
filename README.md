@@ -17,8 +17,19 @@ oshi is SAKURA MIKO<br/>
 
 <!--START_SECTION:waka-->
 
+```rust
+From: 05 April 2026 - To: 12 April 2026
 
+Total Time: 2 hrs 21 mins
 
+JavaScript   2 hrs 12 mins         ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.34 %
+Markdown     6 mins                ░░░░░░░░░░░░░░░░░░░░░░░░░   00.11 %
+Git Config   1 min                 ░░░░░░░░░░░░░░░░░░░░░░░░░   00.02 %
+Git          0 secs                ░░░░░░░░░░░░░░░░░░░░░░░░░   00.01 %
+TypeScript   0 secs                ░░░░░░░░░░░░░░░░░░░░░░░░░   00.01 %
+JSON         0 secs                ░░░░░░░░░░░░░░░░░░░░░░░░░   00.01 %
+CSS          0 secs                ░░░░░░░░░░░░░░░░░░░░░░░░░   00.00 %
+```
 
 <!--END_SECTION:waka-->
 ![](https://github-readme-streak-stats.herokuapp.com/?user=yakiniku35&theme=dark&hide_border=true)<br/>
