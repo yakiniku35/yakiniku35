@@ -18,18 +18,18 @@ oshi is SAKURA MIKO<br/>
 <!--START_SECTION:waka-->
 
 ```rust
-From: 14 April 2026 - To: 14 May 2026
+From: 15 April 2026 - To: 15 May 2026
 
-Total Time: 14 hrs 6 mins
+Total Time: 13 hrs 12 mins
 
-JavaScript     4 hrs 21 mins         ████▓░░░░░░░░░░░░░░░░░░░░   18.58 %
-Python         4 hrs 14 mins         ████▓░░░░░░░░░░░░░░░░░░░░   18.08 %
-Markdown       1 hr 48 mins          ██░░░░░░░░░░░░░░░░░░░░░░░   07.70 %
-YAML           1 hr                  █░░░░░░░░░░░░░░░░░░░░░░░░   04.28 %
-HTML           40 mins               ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.89 %
-Git Config     28 mins               ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.01 %
-JSON           26 mins               ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.85 %
-TOML           21 mins               ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.50 %
+Python       4 hrs 11 mins         █████░░░░░░░░░░░░░░░░░░░░   20.45 %
+JavaScript   3 hrs 41 mins         ████▓░░░░░░░░░░░░░░░░░░░░   18.01 %
+Markdown     1 hr 47 mins          ██▒░░░░░░░░░░░░░░░░░░░░░░   08.74 %
+YAML         1 hr                  █▒░░░░░░░░░░░░░░░░░░░░░░░   04.90 %
+HTML         40 mins               ▓░░░░░░░░░░░░░░░░░░░░░░░░   03.31 %
+Git Config   28 mins               ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.30 %
+JSON         21 mins               ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.74 %
+TOML         21 mins               ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.72 %
 ```
 
 <!--END_SECTION:waka-->
