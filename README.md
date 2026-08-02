@@ -18,13 +18,13 @@ oshi is SAKURA MIKO<br/>
 <!--START_SECTION:waka-->
 
 ```rust
-From: 30 June 2026 - To: 30 July 2026
+From: 01 July 2026 - To: 31 July 2026
 
-Total Time: 50 hrs 53 mins
+Total Time: 49 hrs 35 mins
 
-Python       50 hrs 31 mins        ████████████████████████▓   98.02 %
-JavaScript   9 mins                ░░░░░░░░░░░░░░░░░░░░░░░░░   00.31 %
-JSON         6 mins                ░░░░░░░░░░░░░░░░░░░░░░░░░   00.21 %
+Python       49 hrs 13 mins        ████████████████████████▒   97.96 %
+JavaScript   9 mins                ░░░░░░░░░░░░░░░░░░░░░░░░░   00.32 %
+JSON         6 mins                ░░░░░░░░░░░░░░░░░░░░░░░░░   00.22 %
 Bash         5 mins                ░░░░░░░░░░░░░░░░░░░░░░░░░   00.17 %
 HTML         0 secs                ░░░░░░░░░░░░░░░░░░░░░░░░░   00.01 %
 Git Config   0 secs                ░░░░░░░░░░░░░░░░░░░░░░░░░   00.00 %
