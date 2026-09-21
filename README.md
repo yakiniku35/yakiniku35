@@ -1,7 +1,7 @@
 oshi is SAKURA MIKO<br/>
 <!--[gif](https://github.com/yakiniku35/yakiniku35/blob/main/miko_thinking.gif)-->
 ```basic
-      ___   
+       ___   
       /\  \             
      /::\  \          Peter Chiu
     /:/\:\__\         ----------------
