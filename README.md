@@ -1,8 +1,7 @@
 oshi is SAKURA MIKO<br/>
-
 <!--[gif](https://github.com/yakiniku35/yakiniku35/blob/main/miko_thinking.gif)-->
 ```basic
-       ___   
+      ___   
       /\  \             
      /::\  \          Peter Chiu
     /:/\:\__\         ----------------
@@ -14,9 +13,7 @@ oshi is SAKURA MIKO<br/>
      \:\__\  
       \/__/  
 ```
-
 <!--START_SECTION:waka-->
-
 ```rust
 From: 19 August 2026 - To: 18 September 2026
 
