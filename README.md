@@ -8,7 +8,7 @@ oshi is SAKURA MIKO<br/>
    /:/ /:/  /         Area: Mobile
   /:/_/:/  /          Languages: python, java, html, css, JS
   \:\/:/  /           Host: Taipei, TW
-   \::/__/            Uptime: 20y
+   \::/__/            Uptime: 5y
     \:\  \   
      \:\__\  
       \/__/  
