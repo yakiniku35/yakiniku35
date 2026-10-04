@@ -4,196 +4,164 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Peter Chiu | 自我介紹</title>
-  <meta name="description" content="Peter Chiu 的個人網站，正在學習 Python、Java、JavaScript 與網頁開發。">
+  <meta name="description" content="Peter Chiu 的個人網站。用經典 RPG 選單的方式介紹自己。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Press Start 2P：英文像素字  /  DotGothic16：點陣風格的日文字（拿來放小標籤）  /  Noto Serif TC：繁中明體，古典感來源 -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=DotGothic16&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- 導覽列：固定在最上方，捲動時會變成半透明毛玻璃 -->
-  <header class="nav" id="nav">
-    <a class="nav__logo" href="#top">yakiniku35</a>
-    <nav class="nav__links">
-      <a href="#about">關於我</a>
-      <a href="#skills">技能</a>
-      <a href="#projects">作品</a>
-      <a href="#interests">興趣</a>
-      <a href="#contact">聯絡</a>
-    </nav>
-  </header>
+  <!-- 開場黑幕：頁面載入後慢慢淡出，像遊戲開機 -->
+  <div id="fade" class="fade" aria-hidden="true"></div>
 
-  <main id="top">
+  <!-- 背景星塵：由 script.js 用 canvas 畫出慢慢飄的小像素點 -->
+  <canvas id="stars" class="stars" aria-hidden="true"></canvas>
 
-    <!-- ===== 第一屏 Hero：名字 + 打字動畫 + 終端機風格名片 ===== -->
-    <section class="hero">
-      <div class="hero__text">
-        <p class="hero__greeting reveal">嗨，我是</p>
-        <h1 class="hero__name reveal">Peter Chiu</h1>
-        <p class="hero__tagline reveal">
-          <!-- 這一行會被 script.js 的打字效果逐字打出來 -->
-          <span class="typing" id="typing"></span><span class="cursor">|</span>
-        </p>
-        <div class="hero__actions reveal">
-          <a class="btn btn--primary" href="#projects">看看我的作品</a>
-          <a class="btn btn--ghost" href="#contact">聯絡我</a>
-        </div>
-      </div>
+  <main class="game">
 
-      <!-- 終端機風格名片：把 README 的 ASCII 名片搬過來 -->
-      <div class="terminal reveal" aria-label="終端機風格的個人名片">
-        <div class="terminal__bar">
-          <span class="dot dot--red"></span>
-          <span class="dot dot--yellow"></span>
-          <span class="dot dot--green"></span>
-          <span class="terminal__title">peter@taipei: ~</span>
-        </div>
-<pre class="terminal__body"><span class="t-prompt">$</span> <span class="t-cmd">whoami</span>
-<span class="t-ascii">       ___
-      /\  \
-     /::\  \          <span class="t-key">Peter Chiu</span>
-    /:/\:\__\         ----------------
-   /:/ /:/  /         <span class="t-key">Area:</span>      Mobile
-  /:/_/:/  /          <span class="t-key">Languages:</span> python, java, html, css, JS
-  \:\/:/  /           <span class="t-key">Host:</span>      Taipei, TW
-   \::/__/            <span class="t-key">Uptime:</span>    5y
-    \:\  \
-     \:\__\
-      \/__/</span>
-<span class="t-prompt">$</span> <span class="t-cmd blink">_</span></pre>
-      </div>
+    <!-- ========== 畫面 1：標題畫面 ========== -->
+    <section class="screen screen--title" id="title">
+      <p class="title__kicker">— 自 我 介 紹 —</p>
+      <!-- 名字會被 script.js 拆成一個一個字母，做出依序落下的動畫 -->
+      <h1 class="title__name" id="title-name" aria-label="Peter Chiu">Peter Chiu</h1>
+      <p class="title__sub">A Mobile Developer in Training</p>
+      <div class="rule"><span>✦</span></div>
+      <button class="press-start" id="start" type="button">▶ PRESS START</button>
+      <p class="title__hint">按任意鍵或點擊畫面開始</p>
     </section>
 
-    <!-- ===== 關於我 ===== -->
-    <section class="section" id="about">
-      <h2 class="section__title reveal"><span class="section__num">01.</span> 關於我</h2>
-      <div class="about">
-        <div class="about__text reveal">
-          <!-- TODO：這裡的文字是暫時的，之後換成你自己的介紹 -->
-          <p>
-            我是來自台北的開發學習者，目前對 <strong>Mobile 開發</strong> 最有興趣。
-            正在學習 Python、Java、JavaScript，還有 HTML / CSS 這些網頁基礎。
-          </p>
-          <p>
-            這個網站本身就是我的練習作品之一：用純 HTML、CSS 和 JavaScript 寫成，
-            沒有使用任何框架，程式碼裡都有中文註解。
-          </p>
-          <ul class="facts">
-            <li><span class="facts__icon">📍</span> Taipei, Taiwan</li>
-            <li><span class="facts__icon">📱</span> 興趣領域：Mobile</li>
-            <li><span class="facts__icon">⏱️</span> 寫程式年資：5 年</li>
-            <li><span class="facts__icon">🌸</span> 推：さくらみこ</li>
+    <!-- ========== 畫面 2：選單畫面 ========== -->
+    <section class="screen screen--menu" id="menu" hidden>
+
+      <div class="hud">
+        <!-- 左側指令視窗 -->
+        <div class="win win--command" style="--delay:0s">
+          <h2 class="win__title">COMMAND</h2>
+          <ul class="cmd" id="cmd" role="menu">
+            <li class="cmd__item is-active" role="menuitem" tabindex="0" data-cmd="status">
+              <span class="cmd__cursor" aria-hidden="true">▶</span>狀態<small>STATUS</small>
+            </li>
+            <li class="cmd__item" role="menuitem" tabindex="-1" data-cmd="skill">
+              <span class="cmd__cursor" aria-hidden="true">▶</span>技能<small>SKILL</small>
+            </li>
+            <li class="cmd__item" role="menuitem" tabindex="-1" data-cmd="item">
+              <span class="cmd__cursor" aria-hidden="true">▶</span>道具<small>ITEM</small>
+            </li>
+            <li class="cmd__item" role="menuitem" tabindex="-1" data-cmd="party">
+              <span class="cmd__cursor" aria-hidden="true">▶</span>夥伴<small>PARTY</small>
+            </li>
+            <li class="cmd__item" role="menuitem" tabindex="-1" data-cmd="talk">
+              <span class="cmd__cursor" aria-hidden="true">▶</span>對話<small>TALK</small>
+            </li>
           </ul>
+          <p class="cmd__help">↑↓ 選擇　Enter 決定</p>
         </div>
-        <div class="about__photo reveal">
-          <!-- TODO：換成你的照片或頭像，建議 600x600 以上的正方形圖片 -->
-          <div class="photo-frame">
-            <div class="photo-placeholder">
-              <span>你的照片<br>或頭像</span>
+
+        <!-- 右側內容視窗：依選到的指令切換 -->
+        <div class="win win--panel" id="panel" style="--delay:.12s">
+
+          <!-- 狀態 -->
+          <div class="panel" data-panel="status">
+            <h2 class="win__title">STATUS</h2>
+            <div class="status">
+              <div class="status__portrait" aria-label="角色頭像（待補）">
+                <!-- TODO：換成你的像素頭像或照片，建議正方形 -->
+                <span>?</span>
+              </div>
+              <div class="status__main">
+                <div class="status__head">
+                  <span class="status__name">Peter Chiu</span>
+                  <span class="status__lv">Lv <b>5</b></span>
+                </div>
+                <dl class="rows">
+                  <dt>職業</dt><dd>Mobile 開發見習生</dd>
+                  <dt>出身</dt><dd>台北・台灣</dd>
+                  <dt>所屬</dt><dd class="todo">（學校或公司，待補）</dd>
+                </dl>
+                <!-- data-value 是血條要長到的百分比 -->
+                <div class="gauge" data-value="80">
+                  <span class="gauge__label">HP</span>
+                  <div class="gauge__bar"><div class="gauge__fill gauge__fill--hp"></div></div>
+                  <span class="gauge__num">80<i>/100</i></span>
+                  <span class="gauge__note">學習熱情</span>
+                </div>
+                <div class="gauge" data-value="55">
+                  <span class="gauge__label">MP</span>
+                  <div class="gauge__bar"><div class="gauge__fill gauge__fill--mp"></div></div>
+                  <span class="gauge__num">55<i>/100</i></span>
+                  <span class="gauge__note">咖啡因</span>
+                </div>
+              </div>
+            </div>
+            <div class="equip">
+              <span class="equip__label">裝備</span>
+              <span class="chip">Python</span><span class="chip">Java</span><span class="chip">JavaScript</span><span class="chip">HTML</span><span class="chip">CSS</span>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ===== 技能：進度條會在捲到畫面時長出來 ===== -->
-    <section class="section" id="skills">
-      <h2 class="section__title reveal"><span class="section__num">02.</span> 技能</h2>
-      <p class="section__lead reveal">下面的百分比目前是依照 WakaTime 最近 30 天的寫程式時間比例填的，之後可以改成你自己的評估。</p>
-      <div class="skills">
-        <!-- data-level 是進度條要長到的百分比，script.js 會讀取它 -->
-        <div class="skill reveal" data-level="75">
-          <div class="skill__head"><span>HTML / CSS</span><span class="skill__pct">75%</span></div>
-          <div class="skill__bar"><div class="skill__fill"></div></div>
-        </div>
-        <div class="skill reveal" data-level="55">
-          <div class="skill__head"><span>Java</span><span class="skill__pct">55%</span></div>
-          <div class="skill__bar"><div class="skill__fill"></div></div>
-        </div>
-        <div class="skill reveal" data-level="55">
-          <div class="skill__head"><span>Python</span><span class="skill__pct">55%</span></div>
-          <div class="skill__bar"><div class="skill__fill"></div></div>
-        </div>
-        <div class="skill reveal" data-level="40">
-          <div class="skill__head"><span>JavaScript</span><span class="skill__pct">40%</span></div>
-          <div class="skill__bar"><div class="skill__fill"></div></div>
-        </div>
-        <div class="skill reveal" data-level="30">
-          <div class="skill__head"><span>Git / GitHub</span><span class="skill__pct">30%</span></div>
-          <div class="skill__bar"><div class="skill__fill"></div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== 作品：卡片滑鼠移過去會浮起來 ===== -->
-    <section class="section" id="projects">
-      <h2 class="section__title reveal"><span class="section__num">03.</span> 作品</h2>
-      <div class="cards">
-        <!-- TODO：以下三張卡片都是範例，之後換成你真實的專案 -->
-        <article class="card reveal">
-          <div class="card__thumb card__thumb--1"></div>
-          <div class="card__body">
-            <h3>個人網站</h3>
-            <p>就是你現在看到的這個網站。純 HTML / CSS / JS，支援手機瀏覽與捲動動畫。</p>
-            <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          <!-- 技能 -->
+          <div class="panel" data-panel="skill" hidden>
+            <h2 class="win__title">SKILL</h2>
+            <!-- TODO：星星數目前是暫定，可以自己調 -->
+            <ul class="skills">
+              <li><span>HTML / CSS</span><span class="stars-rate" aria-label="4 顆星">★★★★☆</span></li>
+              <li><span>Java</span><span class="stars-rate" aria-label="3 顆星">★★★☆☆</span></li>
+              <li><span>Python</span><span class="stars-rate" aria-label="3 顆星">★★★☆☆</span></li>
+              <li><span>JavaScript</span><span class="stars-rate" aria-label="2 顆星">★★☆☆☆</span><em class="learning">習得中</em></li>
+              <li><span>Git / GitHub</span><span class="stars-rate" aria-label="2 顆星">★★☆☆☆</span></li>
+            </ul>
           </div>
-          <a class="card__link" href="https://github.com/yakiniku35/yakiniku35" target="_blank" rel="noopener">GitHub ↗</a>
-        </article>
-        <article class="card reveal">
-          <div class="card__thumb card__thumb--2"></div>
-          <div class="card__body">
-            <h3>Java 課堂作業</h3>
-            <p>範例卡片。可以放學校的 Java 專案，例如用 Scanner 做的小遊戲或計算工具。</p>
-            <div class="tags"><span>Java</span></div>
-          </div>
-          <a class="card__link" href="#" aria-disabled="true">之後補上 ↗</a>
-        </article>
-        <article class="card reveal">
-          <div class="card__thumb card__thumb--3"></div>
-          <div class="card__body">
-            <h3>Python 小工具</h3>
-            <p>範例卡片。可以放你用 Python 寫過的腳本或小程式。</p>
-            <div class="tags"><span>Python</span></div>
-          </div>
-          <a class="card__link" href="#" aria-disabled="true">之後補上 ↗</a>
-        </article>
-      </div>
-    </section>
 
-    <!-- ===== 興趣：Miko gif ===== -->
-    <section class="section" id="interests">
-      <h2 class="section__title reveal"><span class="section__num">04.</span> 興趣</h2>
-      <div class="interests">
-        <figure class="interests__media reveal">
-          <img src="assets/miko_thinking.gif" alt="さくらみこ 思考中的動圖" loading="lazy">
-          <figcaption>oshi is SAKURA MIKO 🌸</figcaption>
-        </figure>
-        <div class="interests__text reveal">
-          <!-- TODO：寫幾句你平常喜歡做的事 -->
-          <p>除了寫程式，我也喜歡看 hololive 的直播，推是さくらみこ。</p>
-          <p>這一區可以放更多興趣：遊戲、音樂、運動、攝影……都可以。</p>
+          <!-- 道具 = 作品 -->
+          <div class="panel" data-panel="item" hidden>
+            <h2 class="win__title">ITEM</h2>
+            <!-- TODO：換成你真實的專案 -->
+            <ul class="items">
+              <li><a href="https://github.com/yakiniku35/yakiniku35" target="_blank" rel="noopener">個人網站</a><span class="items__qty">×1</span><p>你現在看到的這個。純 HTML / CSS / JS。</p></li>
+              <li><span class="todo">Java 課堂作業</span><span class="items__qty">×?</span><p>待補：學校的 Java 專案。</p></li>
+              <li><span class="todo">Python 小工具</span><span class="items__qty">×?</span><p>待補：用 Python 寫過的腳本。</p></li>
+            </ul>
+          </div>
+
+          <!-- 夥伴 = 興趣 -->
+          <div class="panel" data-panel="party" hidden>
+            <h2 class="win__title">PARTY</h2>
+            <div class="party">
+              <img class="party__img" src="assets/miko_thinking.gif" alt="さくらみこ 思考中" loading="lazy">
+              <div>
+                <p class="party__name">さくらみこ <small>Lv ???</small></p>
+                <p>推し。看 hololive 直播是我回血的方式。</p>
+                <!-- TODO：寫幾句你其他的興趣 -->
+                <p class="todo">（其他興趣待補：遊戲、音樂、運動……）</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 對話 = 聯絡 -->
+          <div class="panel" data-panel="talk" hidden>
+            <h2 class="win__title">TALK</h2>
+            <ul class="talk">
+              <li><a href="https://github.com/yakiniku35" target="_blank" rel="noopener">▶ GitHub</a></li>
+              <li><a href="mailto:ptc101101@gmail.com">▶ Email</a></li>
+              <!-- TODO：補上實際連結或刪掉 -->
+              <li class="todo">▶ Instagram（待補）</li>
+              <li class="todo">▶ Discord（待補）</li>
+            </ul>
+          </div>
+
         </div>
       </div>
-    </section>
 
-    <!-- ===== 聯絡 ===== -->
-    <section class="section section--center" id="contact">
-      <h2 class="section__title reveal"><span class="section__num">05.</span> 聯絡我</h2>
-      <p class="section__lead reveal">想聊聊程式、Mobile 開發或 hololive，都歡迎找我。</p>
-      <div class="socials reveal">
-        <!-- TODO：補上你實際的社群連結，不要的可以刪掉 -->
-        <a class="social" href="https://github.com/yakiniku35" target="_blank" rel="noopener">GitHub</a>
-        <a class="social" href="mailto:ptc101101@gmail.com">Email</a>
-        <a class="social social--todo" href="#">Instagram（待補）</a>
-        <a class="social social--todo" href="#">Discord（待補）</a>
+      <!-- 底部對話框：文字會一個字一個字打出來，點一下看下一句 -->
+      <div class="win win--dialog" id="dialog" style="--delay:.24s" role="button" tabindex="0" aria-live="polite">
+        <p class="dialog__text" id="dialog-text"></p>
+        <span class="dialog__next" id="dialog-next" aria-hidden="true">▼</span>
       </div>
-    </section>
 
+    </section>
   </main>
-
-  <footer class="footer">
-    <p>© <span id="year"></span> Peter Chiu · Built with HTML, CSS &amp; vanilla JS</p>
-  </footer>
 
   <script src="script.js"></script>
 </body>

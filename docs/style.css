@@ -1,267 +1,280 @@
 /* =========================================================
-   Peter Chiu 自我介紹網站 - 樣式表
-   主題：深色底 + 櫻花粉點綴（向さくらみこ致敬）
+   Peter Chiu 自我介紹網站 第二版 - 經典 RPG 選單風
+   靈感：16-bit 年代的 JRPG（深藍視窗、白色雙線邊框、金色裝飾）
    ========================================================= */
 
-/* ---------- 1. 色彩與基本變數 ---------- */
+/* ---------- 1. 變數 ---------- */
 :root {
-  --bg: #0f1117;            /* 整體背景 */
-  --bg-soft: #161925;       /* 卡片、終端機背景 */
-  --line: #262b3b;          /* 邊框線 */
-  --text: #e6e8f0;          /* 主要文字 */
-  --text-muted: #9aa3b8;    /* 次要文字 */
-  --accent: #ff8fb1;        /* 櫻花粉：主要強調色 */
-  --accent-2: #ffd1dc;      /* 淺粉：hover 用 */
-  --accent-glow: rgba(255, 143, 177, 0.35);
-  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
-  --sans: "Noto Sans TC", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --radius: 14px;
-  --max: 1080px;
+  --bg-1: #070a22;           /* 背景漸層：上 */
+  --bg-2: #121a4e;           /* 背景漸層：下 */
+  --win: #141a52;            /* 視窗底色（勇者鬥惡龍藍） */
+  --win-dark: #0c1040;       /* 視窗內更深的區塊 */
+  --frame: #f3eedc;          /* 視窗邊框：象牙白 */
+  --gold: #e3bf5f;           /* 金色裝飾 */
+  --gold-dim: #9c833f;
+  --ink: #f5f1e6;            /* 主要文字 */
+  --ink-muted: #aab1dc;      /* 次要文字 */
+  --hp: #6ddf7a;
+  --mp: #ff8fb1;             /* 粉色留給みこ */
+  --pixel: "Press Start 2P", monospace;
+  --dot: "DotGothic16", "Press Start 2P", monospace;
+  --serif: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
 }
 
-/* ---------- 2. 重設與全域 ---------- */
+/* ---------- 2. 全域 ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html, body { height: 100%; }
 body {
   margin: 0;
-  font-family: var(--sans);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-  /* 背景加一點淡淡的粉色光暈，讓畫面不那麼死黑 */
-  background-image:
-    radial-gradient(900px 500px at 15% -10%, rgba(255,143,177,0.12), transparent 60%),
-    radial-gradient(700px 400px at 100% 20%, rgba(120,140,255,0.10), transparent 60%);
-  background-attachment: fixed;
+  font-family: var(--serif);
+  font-weight: 500;
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
-a { color: var(--accent); text-decoration: none; }
-a:hover { color: var(--accent-2); }
+a { color: var(--gold); text-decoration: none; }
+a:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
 img { max-width: 100%; display: block; }
-h1, h2, h3 { line-height: 1.25; margin: 0; }
+h1, h2, p, ul, dl { margin: 0; }
+ul { padding: 0; list-style: none; }
+[hidden] { display: none !important; }
+.todo { color: var(--ink-muted); font-style: normal; }
 
-/* ---------- 3. 導覽列 ---------- */
-.nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 16px 24px;
-  transition: background .3s, backdrop-filter .3s, box-shadow .3s;
+/* 開場黑幕 */
+.fade {
+  position: fixed; inset: 0; z-index: 100; background: #000;
+  pointer-events: none;
+  animation: fade-out 1.4s ease .2s forwards;
 }
-/* 捲動後由 script.js 加上 .nav--scrolled，變成毛玻璃 */
-.nav--scrolled {
-  background: rgba(15, 17, 23, 0.7);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 1px 0 var(--line);
-}
-.nav__logo { font-family: var(--mono); font-weight: 700; color: var(--text); }
-.nav__links { display: flex; gap: 20px; }
-.nav__links a {
-  color: var(--text-muted); font-size: 14px; position: relative;
-}
-/* 連結底下的小底線動畫 */
-.nav__links a::after {
-  content: ""; position: absolute; left: 0; bottom: -4px;
-  width: 100%; height: 2px; background: var(--accent);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform .25s ease;
-}
-.nav__links a:hover { color: var(--text); }
-.nav__links a:hover::after { transform: scaleX(1); }
+@keyframes fade-out { to { opacity: 0; } }
 
-/* ---------- 4. Hero 第一屏 ---------- */
-.hero {
+/* 背景星塵 canvas，鋪滿整個畫面、放在最底層 */
+.stars { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; }
+
+.game { position: relative; z-index: 1; min-height: 100vh; }
+
+/* 兩個畫面都置中，手機也要塞得下 */
+.screen {
   min-height: 100vh;
-  max-width: var(--max); margin: 0 auto;
-  padding: 120px 24px 60px;
-  display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px;
-  align-items: center;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  padding: 32px 20px;
 }
-.hero__greeting { color: var(--accent); font-family: var(--mono); margin: 0 0 8px; }
-.hero__name {
-  font-size: clamp(40px, 7vw, 72px); font-weight: 700;
-  letter-spacing: -0.02em;
-  background: linear-gradient(90deg, #fff, var(--accent-2));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+
+/* ---------- 3. 標題畫面 ---------- */
+.screen--title { text-align: center; transition: opacity .5s ease, transform .5s ease; }
+.screen--title.is-leaving { opacity: 0; transform: translateY(-24px); }
+
+.title__kicker {
+  font-family: var(--serif); letter-spacing: .4em; color: var(--gold);
+  font-size: 14px; margin-bottom: 28px;
+  animation: rise .8s ease .6s both;
 }
-.hero__tagline {
-  font-family: var(--mono); font-size: clamp(16px, 2.2vw, 22px);
-  color: var(--text-muted); margin: 16px 0 28px; min-height: 1.7em;
+.title__name {
+  font-family: var(--pixel);
+  font-size: clamp(22px, 5.2vw, 50px);
+  line-height: 1.4;
+  color: #fff;
+  /* 金色文字加一點像素風的硬陰影，是老遊戲標題的味道 */
+  text-shadow:
+    0 3px 0 var(--gold-dim),
+    0 6px 0 #3a2f12,
+    0 10px 24px rgba(0,0,0,.6);
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 0 .1em;
 }
-/* 打字游標閃爍 */
-.cursor { color: var(--accent); animation: blink 1s steps(2) infinite; }
+/* 每個字母由 script.js 包成 span，--i 是第幾個字，用來錯開時間 */
+.title__name span {
+  display: inline-block;
+  animation: drop .6s cubic-bezier(.2,.9,.3,1.3) both;
+  animation-delay: calc(.5s + var(--i) * 70ms);
+}
+.title__name span.space { width: .6em; }
+@keyframes drop {
+  from { opacity: 0; transform: translateY(-40px) scale(1.3); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.title__sub {
+  font-family: var(--dot); font-size: 15px; letter-spacing: .12em; color: var(--ink-muted);
+  margin-top: 22px; animation: rise .8s ease 1.3s both;
+}
+/* 金色分隔線：中間一個小星星 */
+.rule {
+  display: flex; align-items: center; gap: 14px; width: min(360px, 70vw);
+  margin: 26px auto; color: var(--gold); animation: rise .8s ease 1.5s both;
+}
+.rule::before, .rule::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
+.rule::after { background: linear-gradient(90deg, var(--gold), transparent); }
+
+.press-start {
+  font-family: var(--pixel); font-size: clamp(11px, 1.6vw, 15px);
+  color: #fff; background: none; border: 0; cursor: pointer; padding: 12px 18px;
+  animation: rise .8s ease 1.8s both, blink 1.1s steps(2) 2.6s infinite;
+}
+.press-start:hover { color: var(--gold); }
+.title__hint { font-size: 12px; color: var(--ink-muted); margin-top: 6px; animation: rise .8s ease 2s both; }
+
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 @keyframes blink { 50% { opacity: 0; } }
-.blink { animation: blink 1s steps(2) infinite; }
 
-.hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
-.btn {
-  display: inline-block; padding: 12px 22px; border-radius: 999px;
-  font-weight: 500; font-size: 15px; border: 1px solid transparent;
-  transition: transform .2s, box-shadow .2s, background .2s, color .2s;
+/* ---------- 4. RPG 視窗 ----------
+   白色雙線邊框用 border + box-shadow 疊出來，
+   四個角落放金色小菱形當裝飾。 */
+.win {
+  position: relative;
+  background: var(--win);
+  border: 3px solid var(--frame);
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 3px var(--win),      /* 內外線中間的藍色間隔 */
+    0 0 0 5px var(--frame),    /* 外層第二條白線 */
+    0 18px 40px rgba(0,0,0,.5);
+  padding: 20px 22px;
+  /* 選單畫面出現時，視窗像被「打開」一樣彈出來；--delay 讓三個視窗依序出現 */
+  animation: win-open .45s cubic-bezier(.2,.9,.3,1.2) var(--delay, 0s) both;
 }
-.btn:hover { transform: translateY(-2px); }
-.btn--primary { background: var(--accent); color: #1a0b12; }
-.btn--primary:hover { background: var(--accent-2); color: #1a0b12; box-shadow: 0 10px 30px var(--accent-glow); }
-.btn--ghost { border-color: var(--line); color: var(--text); }
-.btn--ghost:hover { border-color: var(--accent); color: var(--accent); }
+@keyframes win-open {
+  from { opacity: 0; transform: scale(.92) translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+/* 四角菱形：用兩個偽元素各畫兩顆（左上 + 右下、右上 + 左下 共用一個 background） */
+.win::before, .win::after {
+  content: ""; position: absolute; width: 10px; height: 10px;
+  background: var(--gold); transform: rotate(45deg);
+  box-shadow: 0 0 0 2px var(--win);
+}
+.win::before { top: -9px; left: -9px; }
+.win::after { bottom: -9px; right: -9px; }
 
-/* 終端機名片 */
-.terminal {
-  background: var(--bg-soft); border: 1px solid var(--line);
-  border-radius: var(--radius); overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0,0,0,.45);
-  /* 輕微漂浮動畫 */
-  animation: float 6s ease-in-out infinite;
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-.terminal__bar {
-  display: flex; align-items: center; gap: 8px;
-  padding: 10px 14px; border-bottom: 1px solid var(--line);
-  background: #11141d;
-}
-.dot { width: 12px; height: 12px; border-radius: 50%; }
-.dot--red { background: #ff5f57; }
-.dot--yellow { background: #febc2e; }
-.dot--green { background: #28c840; }
-.terminal__title { margin-left: 8px; font-family: var(--mono); font-size: 12px; color: var(--text-muted); }
-.terminal__body {
-  margin: 0; padding: 18px 20px; overflow-x: auto;
-  font-family: var(--mono); font-size: 12.5px; line-height: 1.55; color: var(--text);
-}
-.t-prompt { color: var(--accent); }
-.t-cmd { color: #8be9fd; }
-.t-ascii { color: var(--text-muted); }
-.t-key { color: var(--accent-2); font-weight: 700; }
-
-/* ---------- 5. 區塊共用 ---------- */
-.section { max-width: var(--max); margin: 0 auto; padding: 96px 24px; }
-.section--center { text-align: center; }
-.section__title {
-  font-size: clamp(26px, 4vw, 36px); margin-bottom: 28px;
-  display: flex; align-items: baseline; gap: 12px;
-}
-.section--center .section__title { justify-content: center; }
-.section__num { font-family: var(--mono); font-size: .6em; color: var(--accent); }
-.section__lead { color: var(--text-muted); margin: -12px 0 32px; }
-
-/* ---------- 6. 關於我 ---------- */
-.about { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; }
-.about__text p { margin: 0 0 16px; color: var(--text-muted); }
-.about__text strong { color: var(--text); }
-.facts { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 8px; grid-template-columns: 1fr 1fr; }
-.facts li { font-size: 15px; }
-.facts__icon { margin-right: 6px; }
-
-.photo-frame {
-  position: relative; aspect-ratio: 1; border-radius: var(--radius);
-  padding: 4px;
-  background: linear-gradient(135deg, var(--accent), #7f8cff);
-  transition: transform .3s;
-}
-.photo-frame:hover { transform: rotate(-2deg) scale(1.02); }
-.photo-placeholder, .photo-frame img {
-  width: 100%; height: 100%; border-radius: calc(var(--radius) - 4px);
-  object-fit: cover;
-}
-.photo-placeholder {
-  background: var(--bg-soft); display: grid; place-items: center;
-  color: var(--text-muted); text-align: center; font-family: var(--mono); font-size: 14px;
+.win__title {
+  font-family: var(--pixel); font-size: 10px; letter-spacing: .1em; color: var(--gold);
+  margin-bottom: 14px;
+  /* 標題嵌在上邊框上，像老遊戲的視窗標籤 */
+  position: absolute; top: -14px; left: 16px;
+  background: var(--win); padding: 2px 8px;
 }
 
-/* ---------- 7. 技能進度條 ---------- */
-.skills { display: grid; gap: 18px; max-width: 720px; }
-.skill__head { display: flex; justify-content: space-between; font-size: 15px; margin-bottom: 8px; }
-.skill__pct { font-family: var(--mono); color: var(--text-muted); }
-.skill__bar { height: 10px; background: var(--bg-soft); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
-.skill__fill {
-  height: 100%; width: 0;                 /* 一開始是 0，進入畫面後由 JS 設定寬度 */
-  background: linear-gradient(90deg, var(--accent), #7f8cff);
-  border-radius: 999px;
-  transition: width 1.2s cubic-bezier(.22,.9,.3,1);
+/* ---------- 5. 選單畫面排版 ---------- */
+.screen--menu { gap: 22px; padding-top: 48px; padding-bottom: 40px; }
+.hud {
+  display: grid; grid-template-columns: 220px minmax(0, 560px);
+  gap: 22px; width: 100%; max-width: 820px;
 }
 
-/* ---------- 8. 作品卡片 ---------- */
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
-.card {
-  background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius);
-  overflow: hidden; display: flex; flex-direction: column;
-  transition: transform .25s, border-color .25s, box-shadow .25s;
+/* 指令清單 */
+.cmd__item {
+  position: relative; padding: 9px 8px 9px 26px; cursor: pointer;
+  font-size: 17px; letter-spacing: .08em;
+  color: var(--ink);
+  transition: color .15s;
 }
-.card:hover {
-  transform: translateY(-6px);
-  border-color: var(--accent);
-  box-shadow: 0 20px 50px rgba(0,0,0,.4), 0 0 0 1px var(--accent-glow);
+.cmd__item small { font-family: var(--pixel); font-size: 8px; color: var(--ink-muted); margin-left: 8px; letter-spacing: 0; }
+.cmd__item:hover, .cmd__item.is-active { color: #fff; }
+.cmd__item:focus-visible { outline: 2px dashed var(--gold); outline-offset: 2px; }
+/* 游標 ▶：只在目前選到的項目顯示，而且會閃 */
+.cmd__cursor {
+  position: absolute; left: 6px; top: 50%; transform: translateY(-50%);
+  font-family: var(--pixel); font-size: 10px; color: var(--gold);
+  opacity: 0;
 }
-.card__thumb { height: 150px; }
-/* TODO：之後把這三個漸層換成專案截圖 background-image */
-.card__thumb--1 { background: linear-gradient(135deg, #ff8fb1, #7f8cff); }
-.card__thumb--2 { background: linear-gradient(135deg, #f7971e, #ffd200); }
-.card__thumb--3 { background: linear-gradient(135deg, #43cea2, #185a9d); }
-.card__body { padding: 20px 20px 8px; flex: 1; }
-.card__body h3 { font-size: 18px; margin-bottom: 8px; }
-.card__body p { margin: 0 0 14px; color: var(--text-muted); font-size: 14.5px; }
-.tags { display: flex; gap: 6px; flex-wrap: wrap; }
-.tags span {
-  font-family: var(--mono); font-size: 11.5px; padding: 3px 9px; border-radius: 999px;
-  background: rgba(255,143,177,.12); color: var(--accent-2);
+.cmd__item.is-active .cmd__cursor { opacity: 1; animation: blink .9s steps(2) infinite; }
+.cmd__item.is-active::after {
+  /* 選到的項目底下一條淡淡的金線 */
+  content: ""; position: absolute; left: 24px; right: 8px; bottom: 4px; height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
 }
-.card__link { display: block; padding: 14px 20px; font-size: 14px; border-top: 1px solid var(--line); }
-.card__link[aria-disabled="true"] { color: var(--text-muted); pointer-events: none; }
+.cmd__help { margin-top: 14px; font-family: var(--dot); font-size: 12px; color: var(--ink-muted); }
 
-/* ---------- 9. 興趣 ---------- */
-.interests { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center; }
-.interests__media { margin: 0; }
-.interests__media img {
-  border-radius: var(--radius); border: 1px solid var(--line);
-  box-shadow: 0 20px 50px rgba(0,0,0,.4);
+/* 右側內容視窗 */
+.win--panel { min-height: 300px; }
+.panel { animation: panel-in .35s ease both; }
+@keyframes panel-in { from { opacity: 0; transform: translateX(8px); } to { opacity: 1; transform: none; } }
+
+/* 狀態頁 */
+.status { display: grid; grid-template-columns: 96px 1fr; gap: 18px; align-items: start; }
+.status__portrait {
+  width: 96px; height: 96px; border: 2px solid var(--frame); background: var(--win-dark);
+  display: grid; place-items: center; font-family: var(--pixel); font-size: 28px; color: var(--gold);
+  image-rendering: pixelated;
 }
-.interests__media figcaption { margin-top: 10px; text-align: center; font-family: var(--mono); font-size: 13px; color: var(--text-muted); }
-.interests__text p { color: var(--text-muted); margin: 0 0 14px; }
+.status__head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+.status__name { font-family: var(--pixel); font-size: 13px; color: #fff; }
+.status__lv { font-family: var(--dot); font-size: 14px; color: var(--ink-muted); }
+.status__lv b { color: var(--gold); font-size: 18px; }
+.rows { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; font-size: 15px; margin-bottom: 14px; }
+.rows dt { color: var(--gold); letter-spacing: .2em; }
+.rows dd { margin: 0; }
 
-/* ---------- 10. 聯絡 ---------- */
-.socials { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.social {
-  padding: 12px 20px; border: 1px solid var(--line); border-radius: 999px; color: var(--text);
-  transition: transform .2s, border-color .2s, color .2s;
+/* 血條：寬度一開始 0，顯示時由 JS 設定，用 steps 做出一格一格長的感覺 */
+.gauge { display: grid; grid-template-columns: 28px 1fr auto; gap: 4px 10px; align-items: center; margin-bottom: 8px; }
+.gauge__label { font-family: var(--pixel); font-size: 10px; color: var(--gold); }
+.gauge__bar { height: 12px; background: var(--win-dark); border: 1px solid var(--frame); }
+.gauge__fill { height: 100%; width: 0; transition: width 1.1s steps(12, end); }
+.gauge__fill--hp { background: var(--hp); }
+.gauge__fill--mp { background: var(--mp); }
+.gauge__num { font-family: var(--dot); font-size: 14px; }
+.gauge__num i { font-style: normal; color: var(--ink-muted); }
+.gauge__note { grid-column: 2; font-size: 12px; color: var(--ink-muted); margin-top: -4px; }
+
+.equip { margin-top: 18px; padding-top: 14px; border-top: 1px dashed rgba(243,238,220,.3); display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.equip__label { color: var(--gold); letter-spacing: .2em; margin-right: 6px; font-size: 14px; }
+.chip { font-family: var(--dot); font-size: 13px; padding: 2px 8px; border: 1px solid var(--frame); background: var(--win-dark); }
+
+/* 技能頁 */
+.skills li { display: flex; align-items: center; gap: 14px; padding: 9px 0; border-bottom: 1px dashed rgba(243,238,220,.2); font-size: 16px; }
+.skills li > span:first-child { flex: 1; }
+.stars-rate { color: var(--gold); letter-spacing: .15em; font-size: 15px; }
+.learning { font-family: var(--dot); font-size: 12px; font-style: normal; color: var(--mp); border: 1px solid var(--mp); padding: 1px 6px; }
+
+/* 道具頁 */
+.items li { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 10px 0; border-bottom: 1px dashed rgba(243,238,220,.2); font-size: 16px; }
+.items__qty { font-family: var(--dot); color: var(--ink-muted); }
+.items p { grid-column: 1 / -1; font-size: 13px; color: var(--ink-muted); }
+
+/* 夥伴頁 */
+.party { display: grid; grid-template-columns: 180px 1fr; gap: 18px; align-items: center; font-size: 15px; }
+.party__img { border: 2px solid var(--frame); }
+.party__name { font-size: 18px; color: #fff; margin-bottom: 6px; }
+.party__name small { font-family: var(--dot); color: var(--ink-muted); font-size: 13px; margin-left: 6px; }
+.party p + p { margin-top: 6px; }
+
+/* 對話頁 */
+.talk li { padding: 8px 0; font-size: 17px; letter-spacing: .06em; }
+.talk a { color: var(--ink); }
+.talk a:hover { color: var(--gold); text-decoration: none; padding-left: 6px; transition: padding .15s; }
+
+/* 底部對話框 */
+.win--dialog {
+  width: 100%; max-width: 820px; min-height: 96px; cursor: pointer;
+  padding-right: 40px;
 }
-.social:hover { transform: translateY(-3px); border-color: var(--accent); color: var(--accent); }
-.social--todo { color: var(--text-muted); border-style: dashed; }
-
-/* ---------- 11. 頁尾 ---------- */
-.footer { text-align: center; padding: 32px 24px 48px; color: var(--text-muted); font-size: 13px; font-family: var(--mono); }
-
-/* ---------- 12. 捲動出現動畫 ----------
-   所有 .reveal 元素一開始是透明且往下偏移，
-   script.js 用 IntersectionObserver 偵測到進入畫面後加上 .is-visible。 */
-.reveal {
-  opacity: 0; transform: translateY(24px);
-  transition: opacity .7s ease, transform .7s ease;
+.dialog__text { font-size: 17px; line-height: 1.9; letter-spacing: .04em; }
+/* 打完一句後右下角出現 ▼，上下跳動提示可以點 */
+.dialog__next {
+  position: absolute; right: 16px; bottom: 10px; color: var(--gold);
+  font-family: var(--pixel); font-size: 10px; opacity: 0;
 }
-.reveal.is-visible { opacity: 1; transform: translateY(0); }
-/* 同一個區塊裡的多個元素，用 nth-child 做一點延遲，看起來像依序出現 */
-.cards .reveal:nth-child(2), .skills .reveal:nth-child(2) { transition-delay: .1s; }
-.cards .reveal:nth-child(3), .skills .reveal:nth-child(3) { transition-delay: .2s; }
-.skills .reveal:nth-child(4) { transition-delay: .3s; }
-.skills .reveal:nth-child(5) { transition-delay: .4s; }
+.dialog__next.is-on { opacity: 1; animation: bob .7s ease-in-out infinite alternate; }
+@keyframes bob { from { transform: translateY(0); } to { transform: translateY(4px); } }
 
-/* 使用者在系統設定「減少動態效果」時，關掉所有動畫 */
+/* ---------- 6. 減少動態 ---------- */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; }
-  .reveal { opacity: 1; transform: none; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition: none !important; }
+  .fade { display: none; }
 }
 
-/* ---------- 13. 手機版 ---------- */
-@media (max-width: 820px) {
-  .nav__links { gap: 14px; }
-  .nav__links a { font-size: 13px; }
-  .hero { grid-template-columns: 1fr; padding-top: 110px; gap: 36px; }
-  .about, .interests { grid-template-columns: 1fr; }
-  .about__photo { max-width: 320px; }
-  .section { padding: 72px 20px; }
-  .facts { grid-template-columns: 1fr; }
-}
-@media (max-width: 520px) {
-  .nav { padding: 12px 16px; }
-  .nav__links a:not(:nth-child(-n+3)) { display: none; } /* 手機只顯示前三個連結 */
+/* ---------- 7. 手機版 ---------- */
+@media (max-width: 760px) {
+  .hud { grid-template-columns: 1fr; }
+  .win { padding: 18px 16px; }
+  /* 手機上指令改成橫向一排 */
+  .cmd { display: flex; flex-wrap: wrap; gap: 2px 8px; }
+  .cmd__item { font-size: 15px; padding: 8px 6px 8px 20px; }
+  .cmd__item small { display: none; }
+  .cmd__item.is-active::after { left: 18px; right: 4px; }
+  .cmd__help { display: none; }
+  .status { grid-template-columns: 72px 1fr; gap: 12px; }
+  .status__portrait { width: 72px; height: 72px; }
+  .party { grid-template-columns: 1fr; }
+  .party__img { max-width: 240px; }
+  .dialog__text { font-size: 15px; }
 }
