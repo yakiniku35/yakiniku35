@@ -16,19 +16,19 @@ oshi is SAKURA MIKO<br/>
 <!--START_SECTION:waka-->
 
 ```rust
-From: 23 September 2026 - To: 23 October 2026
+From: 25 September 2026 - To: 25 October 2026
 
-Total Time: 30 hrs 32 mins
+Total Time: 31 hrs 20 mins
 
-Java         14 hrs 19 mins        ███████▓░░░░░░░░░░░░░░░░░   30.82 %
-Markdown     6 hrs 48 mins         ███▓░░░░░░░░░░░░░░░░░░░░░   14.64 %
-Swift        3 hrs 6 mins          █▓░░░░░░░░░░░░░░░░░░░░░░░   06.68 %
-Python       3 hrs 1 min           █▓░░░░░░░░░░░░░░░░░░░░░░░   06.50 %
-Bash         56 mins               ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.04 %
-HTML         54 mins               ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.96 %
-JavaScript   43 mins               ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.56 %
+Java         15 hrs 23 mins        ████████░░░░░░░░░░░░░░░░░   32.53 %
+Markdown     6 hrs 48 mins         ███▓░░░░░░░░░░░░░░░░░░░░░   14.38 %
+Swift        3 hrs 6 mins          █▓░░░░░░░░░░░░░░░░░░░░░░░   06.56 %
+Python       3 hrs 1 min           █▓░░░░░░░░░░░░░░░░░░░░░░░   06.38 %
+Bash         56 mins               ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.00 %
+JavaScript   43 mins               ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.53 %
+HTML         38 mins               ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.35 %
 TypeScript   12 mins               ░░░░░░░░░░░░░░░░░░░░░░░░░   00.43 %
-Git Config   9 mins                ░░░░░░░░░░░░░░░░░░░░░░░░░   00.33 %
+Git Config   9 mins                ░░░░░░░░░░░░░░░░░░░░░░░░░   00.34 %
 ```
 
 <!--END_SECTION:waka-->
